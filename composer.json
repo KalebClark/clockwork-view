@@ -1,0 +1,12 @@
+{
+    "name": "kalebclark/clockwork-view",
+    "authors": [
+        {
+            "name": "Kaleb Clark",
+            "email": "kaleb@abraxxus.net"
+        }
+    ],
+    "require": {
+      "guzzlehttp/guzzle": "^6.2"
+    }
+}
