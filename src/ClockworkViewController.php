@@ -2,6 +2,7 @@
 
 namespace KalebClark\ClockworkView;
 
+use Clockwork\Support\Laravel\ClockworkSupport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client as Guzzle;
@@ -23,10 +24,11 @@ class ClockworkViewController extends Controller
         $this->ignore = [
             '\/vendor',
             '\/clockwork-show',
-            '\/__clockwork-index',
             '\/js\/',
-            '\/css\/'
+            '\/css\/',
+            '\/dummy\/'
         ];
+        //$this->ignore = [];
     }
 
     public function checkMatches($needle, $haystack) {
@@ -69,6 +71,17 @@ class ClockworkViewController extends Controller
         ksort($files, SORT_ASC);
         $files = array_reverse($files,false);
 
+        //$cw = new ClockworkSupport();
+
         return view('clockworkview::index')->with('data', $files);
+    }
+
+    public function dummy($id)
+    {
+        header_remove('X-Clockwork-Version');
+        return response($id)
+            ->header('X-Clockwork-Version', "1.2", true)
+            ->header('X-Clockwork-Id', $id);
+
     }
 }

@@ -44,7 +44,7 @@ $(function() {
         $('#details-row').removeClass('hide');
 
         $.ajax({
-            url: "http://mac.laradev/__clockwork/"+id,
+            url: "/__clockwork/"+id,
             success: function(result) {
                 //this.$remove("cw");
                 //this.$set("cw", result)

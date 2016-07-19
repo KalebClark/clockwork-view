@@ -13,7 +13,7 @@
                     </thead>
                     <tbody>
                     @foreach($data as $request)
-                        <tr class="selectable" data="{{ $request['id'] }}">
+                        <tr class="selectable2" data="{{ $request['id'] }}">
                             <td>{{ $request['time'] }}</td>
                             <td>{{ $request['method'] }}</td>
                             <td>{{ $request['uri'] }}</td>
@@ -141,4 +141,19 @@
         </div>
     </div>
     <!-- /.container -->
+    <script type="text/javascript">
+        $(function() {
+            $(".selectable2").click(function(e) {
+                var id = $(this).attr('data');
+                console.log(id);
+                $.ajax({
+                    url: '/dummy/'+id,
+                    method: 'GET',
+                    success: function(res) {
+                        console.log("SWEET");
+                    }
+                })
+            });
+        });
+    </script>
 @stop
